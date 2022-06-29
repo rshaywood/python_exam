@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='view_one_style.css') }}">
+    <title>TV Shows</title>
+</head>
+<body>
+    <div class="nav">
+        <a href="/dashboard">
+            <button>Back to TV Shows</button>
+        </a>
+        <a href="/user/logout">
+            <button>Logout</button>
+        </a>
+    </div>
+    </div class = "show_details">
+    <h2>{{one_show_with_user.title}}</h2>
+    <div>
+        <p class = "section">Network:</p>
+        <p>{{one_show_with_user.network}}</p>
+        <p class = "section">Release Date:</p>
+        <p>{{one_show_with_user.release_date}}</p>
+        <p class = "section">Description:</p>
+        <p>{{one_show_with_user.description}}</p>
+        <p class = "section">Posted By:</p>
+        <p>{{one_show_with_user.viewer.first_name}} {{one_show_with_user.viewer.last_name}}</p>
+    </div>
+</body>
+</html>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='edit_style.css') }}">
+    <title>TV Shows</title>
+</head>
+<body>
+    <div class="nav">
+        <a href="/dashboard">
+            <button>Back to TV Shows</button>
+        </a>
+        <a href="/user/logout">
+            <button>Logout</button>
+        </a>
+    </div>
+    <h1>Edit {{one_show.title}}</h1>
+    <div class="container">
+        <div class="show_form">
+            {% with messages = get_flashed_messages(category_filter=['create_show']) %}
+                {% if messages %}
+                    {% for message in messages %}
+                        <p>{{message}}</p>
+                    {% endfor %}
+                {% endif %}
+            {% endwith %}
+            <form action="/show/edit", method="post" id ="form">
+                    <input type="hidden" name="id" value="{{one_show.id}}">
+                    <label class = "label">
+                        Title:
+                        <input type="text" name="title" value="{{one_show.title}}">
+                    </label>
+                    <label class = "label">
+                        Network:
+                        <input type="text" name="network" value="{{one_show.network}}">
+                    </label>
+                    <label class = "label">
+                        Release Date:
+                        <input type="date" name="release_date" value="{{one_show.release_date}}">
+                    </label>
+                    <label class = "label">
+                        Description:
+                        <textarea name="description" cols="50" rows="5">{{one_show.description}}</textarea>
+                    </label>
+                    <a href="/dashboard">
+                        <input class ="button" type="submit" value="Update {{one_show.title}}">
+                    </a>
+            </form>
+        </div>
+    </div>
+</body>
+</html>
